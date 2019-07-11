@@ -1,7 +1,11 @@
 <template>
     <div id="map" ref="rootmap">
 
+    <div v-on:click="nextpage" class="backcolor">
+			下一页
+		</div>
     </div>
+
 </template>
 
 <script>
@@ -14,6 +18,11 @@ export default {
       map: null
     };
   },
+  methods: {
+			nextpage() {
+				this.$router.push('/second')
+			}
+		},
   mounted() {
     var mapcontainer = this.$refs.rootmap;
     this.map = new Map({
@@ -34,4 +43,17 @@ export default {
 /*隐藏ol的一些自带元素*/
 .ol-attribution,.ol-zoom { display: none;}
 
+</style>
+
+<style scoped>
+.backcolor {
+  position: absolute;
+  bottom: 50px;
+  z-index: 999;
+	background-color: lightblue;
+		width: 60px;
+	height: 25px;
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
 </style>
